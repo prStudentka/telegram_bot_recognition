@@ -18,7 +18,7 @@ def transfer_voice(message):
     filename = utils.download_tgfile(tbot, message.voice.file_id)
     convert_ogga = utils.oga2wav(filename)
     text = utils.get_speech(convert_ogga)
-    utils.remove_file(convert_ogga)
+    utils.remove_file(filename)
     tbot.send_message(message.chat.id, text)
 
 

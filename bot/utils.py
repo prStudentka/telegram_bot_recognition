@@ -31,7 +31,8 @@ def get_speech(filename):
 def download_tgfile(bot, file_id):
     file_info = bot.get_file(file_id)
     f_path = file_info.file_path
-    downloaded_file = bot.download_file(f_path)
+    if not os.path.exists(f_path):
+        downloaded_file = bot.download_file(f_path)
     filename = f'{file_id}{f_path}'.replace('/', '_')
     with open(filename, 'wb') as file:
         file.write(downloaded_file)
